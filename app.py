@@ -83,12 +83,13 @@ def get_section_data(section_info):
 
     result_data['Name'] = data['data']['SetBySetId']['texts'][0]['content']
     result_data['Items'] = []
-
+    
     for i in range(len(data['data']['SetBySetId']['items'])):
+        result_image = ''
         result_name = data['data']['SetBySetId']['items'][i]['texts'][0]['content']
         if(result_data['Name'] == "Collections"):
             result_image = data['data']['SetBySetId']['items'][i]['images'][4]['url']
-        else:
+        elif len(data['data']['SetBySetId']['items'][i]['images']) > 8:
             result_image = data['data']['SetBySetId']['items'][i]['images'][9]['url']
 
         result_data['Items'].append({'Name': result_name, 'Image': result_image})
